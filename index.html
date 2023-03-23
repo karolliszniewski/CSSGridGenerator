@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+
+    <link
+      rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/monokai-sublime.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!--header -->
+    <header class="header">
+      <span class="header__logo"
+        ><a href="#home" class="header__link">CssGrid</a></span
+      >
+      <div class="header__version">
+        <span class="material-icons">build</span>
+        <span> v1.0 Karol Liszniewski</span>
+      </div>
+
+      <div class="header__links">
+        <span class="header__span">
+          <a href="#source" class="header__source">+ Source Code</a></span
+        >
+        <a href="https://github.com/karolliszniewski" target="__blank"
+          ><img src="../media/git.png" alt="" srcset="" class="header__social"
+        /></a>
+        <a target="__blank" href="https://www.linkedin.com/in/karolliszniewski/"
+          ><img
+            src="../media/linkedin.png"
+            alt=""
+            srcset=""
+            class="header__social"
+        /></a>
+        <a href="https://www.sololearn.com/profile/27645147"
+          ><img
+            src="../media/youtube.png"
+            alt=""
+            srcset=""
+            class="header__social"
+        /></a>
+      </div>
+    </header>
+
+    <!--grid generator area -->
+    <div class="container" id="js-container"></div>
+
+    <!--options -->
+    <div class="control">
+      <nav class="options">
+        <h1 class="options__header">Options</h1>
+        <div class="options__inputs">
+          <div class="options__sets">
+            <label for="options__columns" class="options__label">Columns</label>
+            <input
+              class="options__input"
+              type="text"
+              id="options__columns"
+              value="8"
+            />
+          </div>
+          <div class="options__sets">
+            <label for="options__rows" class="options__label">Rows</label>
+            <input
+              type="text"
+              id="options__rows"
+              class="options__input"
+              value="5"
+            />
+          </div>
+          <div class="options__sets">
+            <label for="options__rows" class="options__label"
+              >Gap Columns</label
+            >
+            <input
+              type="text"
+              id="options__columnsgap"
+              class="options__input"
+              value="1"
+            />
+          </div>
+          <div class="options__sets">
+            <label for="options__rows" class="options__label">Gap Rows</label>
+            <input
+              type="text"
+              id="options__rowsgap"
+              value="1"
+              class="options__input"
+            />
+          </div>
+          <input
+            class="options__submit"
+            id="js-submit"
+            type="button"
+            value="update"
+          />
+        </div>
+      </nav>
+      <!-- css code -->
+      <div class="codes">
+        <div class="codes__header">CSS</div>
+        <pre>
+        <code class="codes__css">
+          .control{
+            display:grid;
+            grid-column: 2;
+            grid-template-columns: 1fr 1fr;
+            gap:10px;
+            justify-self:center;
+          
+          }
+  
+          .control{
+            display:grid;
+            grid-column: 2;
+            grid-template-columns: 1fr 1fr;
+            gap:10px;
+            justify-self:center;
+          
+          }
+          
+        </code>
+      </pre>
+      </div>
+      <!-- html code -->
+      <div class="codes">
+        <div class="codes__header">HTML</div>
+        <pre>
+        <code class="codes__css">
+          .control{
+            display:grid;
+            grid-column: 2;
+            grid-template-columns: 1fr 1fr;
+            gap:10px;
+            justify-self:center;
+          
+          }
+  
+          .control{
+            display:grid;
+            grid-column: 2;
+            grid-template-columns: 1fr 1fr;
+            gap:10px;
+            justify-self:center;
+          
+          }
+          
+        </code>
+      </pre>
+      </div>
+    </div>
+
+    <!--footer -->
+    <footer class="footer">
+      <span class="footer__social">
+        <a href="https://github.com/karolliszniewski" target="__blank"
+          ><img src="../media/git.png" alt="" srcset="" class="footer__social"
+        /></a>
+        <a target="__blank" href="https://www.linkedin.com/in/karolliszniewski/"
+          ><img
+            src="../media/linkedin.png"
+            alt=""
+            srcset=""
+            class="footer__social"
+        /></a>
+        <a href="https://www.sololearn.com/profile/27645147"
+          ><img
+            src="../media/youtube.png"
+            alt=""
+            srcset=""
+            class="footer__social" /></a></span
+      ><span class="footer__links"
+        ><a href="#contact" class="footer__link">Contact me</a>
+        <a href="#portfolio" class="footer__link">Porfolio</a>
+        <a href="https://highlightjs.org/" class="footer__link">highlight.js</a>
+        <a href="#blog" class="footer__link">Blog Promotion</a>
+        <a href="#social" class="footer__link">Social</a></span
+      >
+      <span class="footer__info"
+        >This project is open source and can be freely copied, as it is intended
+        for my portfolio. © 2023 - Designed By: Karol Liszniewski</span
+      >
+    </footer>
+    <script src="js/script.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>
+      hljs.highlightAll();
+    </script>
+  </body>
+</html>
