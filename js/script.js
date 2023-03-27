@@ -1,3 +1,24 @@
+// highlight.js activate
+hljs.highlightAll();
+
+
+
+class SelectionHistory{
+
+  constructor(startColumn,endColumn,startRow,endRow){
+    this.startColumn = parseInt(startColumn)
+    this.endColumn = parseInt(endColumn)
+    this.startRow = parseInt(startRow)
+    this.endRow = parseInt(endRow)
+  }
+
+
+
+}
+
+
+
+
 // class
 class GridGenerator{
 
@@ -6,14 +27,8 @@ class GridGenerator{
   endSquare = null;
   gridArea = 1;
 
-  constructor(containerId,previewStartColumnId,previewEndColumnId,previewStartRowId,previewEndRowId){
+  constructor(containerId){
     this.container = document.getElementById(containerId)
-    this.previewStartColumn = document.getElementById(previewStartColumnId)
-    this.previewEndColumn = document.getElementById(previewEndColumnId)
-    this.previewStartRow = document.getElementById(previewStartRowId)
-    this.previewEndRow = document.getElementById(previewEndRowId)
-
-
   }
 
   initializeSelectionCoordinates(){
@@ -54,7 +69,6 @@ class GridGenerator{
     const columns = parseInt(document.getElementById("options__columns").value)
     const rows = parseInt(document.getElementById("options__rows").value)
     this.container.style.setProperty('grid-template-columns', `repeat(${columns}, minmax(min-content, auto))`);
-    console.log(columns)
     
     while(this.container.firstChild){
       this.container.removeChild(this.container.firstChild)
@@ -72,26 +86,15 @@ class GridGenerator{
       childElement.className = "square";
       this.container.appendChild(childElement)
 
-
-
-
      createRows = (createColumn < columns) ? createRows : createRows + 1;
      createColumn = (createColumn < columns) ? createColumn + 1 : 1;
-
-
-    
-    
-     
-
     }
-
-
   }
 
   clearLiveSelection(){
     const columns = parseInt(document.getElementById("options__columns").value)
     const rows = parseInt(document.getElementById("options__rows").value)
-console.log(columns)
+
     for(let i = 1;i<=rows;i++)
     {
       for(let j= 1;j<=columns;j++){
@@ -111,7 +114,10 @@ console.log(columns)
 
 
 // Declare and initialize constants and variables with the HTML elements required for the functionality.
-const gridGenerator = new GridGenerator("js-container","data__startcolumn","data__endcolumn","data__startrow","data__endrow")
+const gridGenerator = new GridGenerator("container--js")
+
+// Declare array with contains selection history
+let historyArray = []
 
 
 
@@ -129,10 +135,16 @@ gridGenerator.container.addEventListener("mousedown",(event)=>{
 // Register an event listener for when the mouse button is released
 gridGenerator.container.addEventListener("mouseup", () =>{
 
+  gridGenerator.clearLiveSelection();
   gridGenerator.initializeSelectionCoordinates()
   gridGenerator.getMinMaxValues()
   gridGenerator.selectGridArea("selected2")
   
+  // add selection to history
+  let section = new SelectionHistory(gridGenerator.startColumn,gridGenerator.endColumn,gridGenerator.startRow,gridGenerator.endRow)
+  historyArray.push(section)
+  console.log(historyArray)
+
 
   gridGenerator.gridArea++;
   gridGenerator.isMouseDown = false;
@@ -164,6 +176,8 @@ gridGenerator.container.addEventListener("mouseover", (event) => {
 
 })
 
+
+//update used to create all child on pageload
 gridGenerator.updateColumnsAndRows()
 const update = document.getElementById("js-submit")
 
