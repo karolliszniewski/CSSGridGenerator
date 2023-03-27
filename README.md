@@ -18,3 +18,11 @@ The "updateColumnsAndRows" method allows the user to change the number of column
 The "clearLiveSelection" method removes the "selected" class from the container children, so only the currently selected elements by "selectGridArea" are highlighted, and not all the children of the container
 
 The code will be updated, and perhaps the logic will also change. Currently, it's a skeleton for a generator. The next step is to start remembering all the selections in the HTML and JavaScript code so that based on this, the appropriate CSS and HTML code can be created, which can be copied and used in your project.
+
+change log v1.1
+
+* Fixed: Centered the information in the footer.
+* Fixed: Corrected any mistakes related to the BEM (Block Element Modifier) convention.
+* Added: Class SelectionHistory.
+* Added: Variable historyArray.
+
