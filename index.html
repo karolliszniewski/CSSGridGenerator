@@ -9,54 +9,65 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
     />
-
+    <!-- highlight.js styles -->
     <link
       rel="stylesheet"
       href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/monokai-sublime.min.css"
     />
+    <!-- my styles -->
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
     <!--header -->
     <header class="header">
       <span class="header__logo"
-        ><a href="#home" class="header__link">CssGrid</a></span
+        ><a href="#home" class="header__logo-link">CssGrid</a></span
       >
       <div class="header__version">
         <span class="material-icons">build</span>
-        <span> v1.0 Karol Liszniewski</span>
+        <span> v1.1 Karol Liszniewski</span>
       </div>
 
       <div class="header__links">
-        <span class="header__span">
-          <a href="#source" class="header__source">+ Source Code</a></span
+        <span class="header__source-container">
+          <a
+            target="__blank"
+            href="https://github.com/karolliszniewski/CSSGridGenerator"
+            class="header__source-link"
+            >+ Source Code</a
+          ></span
         >
-        <a href="https://github.com/karolliszniewski" target="__blank"
-          ><img src="../media/git.png" alt="" srcset="" class="header__social"
+        <a target="__blank" href="https://github.com/karolliszniewski"
+          ><img
+            src="../media/git.png"
+            alt="github icon"
+            srcset=""
+            class="header__social-link"
         /></a>
         <a target="__blank" href="https://www.linkedin.com/in/karolliszniewski/"
           ><img
             src="../media/linkedin.png"
-            alt=""
-            srcset=""
-            class="header__social"
+            alt="linketin icon"
+            class="header__social-link"
         /></a>
-        <a href="https://www.sololearn.com/profile/27645147"
+        <a
+          target="__blank"
+          href="https://www.youtube.com/channel/UCR7Nx0IfTpP1tWRvvi40cFw"
           ><img
             src="../media/youtube.png"
-            alt=""
+            alt="youtube icon"
             srcset=""
-            class="header__social"
+            class="header__social-link"
         /></a>
       </div>
     </header>
 
     <!--grid generator area -->
-    <div class="container" id="js-container"></div>
+    <div class="container" id="container--js"></div>
 
     <!--options -->
     <div class="control">
-      <nav class="options">
+      <div class="options">
         <h1 class="options__header">Options</h1>
         <div class="options__inputs">
           <div class="options__sets">
@@ -78,7 +89,7 @@
             />
           </div>
           <div class="options__sets">
-            <label for="options__rows" class="options__label"
+            <label for="options__columnsgap" class="options__label"
               >Gap Columns</label
             >
             <input
@@ -89,7 +100,9 @@
             />
           </div>
           <div class="options__sets">
-            <label for="options__rows" class="options__label">Gap Rows</label>
+            <label for="options__rowsgap" class="options__label"
+              >Gap Rows</label
+            >
             <input
               type="text"
               id="options__rowsgap"
@@ -104,7 +117,7 @@
             value="update"
           />
         </div>
-      </nav>
+      </div>
       <!-- css code -->
       <div class="codes">
         <div class="codes__header">CSS</div>
@@ -135,24 +148,12 @@
       <div class="codes">
         <div class="codes__header">HTML</div>
         <pre>
-        <code class="codes__css">
-          .control{
-            display:grid;
-            grid-column: 2;
-            grid-template-columns: 1fr 1fr;
-            gap:10px;
-            justify-self:center;
-          
-          }
-  
-          .control{
-            display:grid;
-            grid-column: 2;
-            grid-template-columns: 1fr 1fr;
-            gap:10px;
-            justify-self:center;
-          
-          }
+        <code class="codes__html">
+          &lt;div class="parent"&gt;
+          &lt;div class="div1"&gt; &lt;/div&gt;
+          &lt;div class="div2"&gt; &lt;/div&gt;
+          &lt;div class="div3"&gt; &lt;/div&gt;
+        &lt;/div&gt;
           
         </code>
       </pre>
@@ -162,21 +163,26 @@
     <!--footer -->
     <footer class="footer">
       <span class="footer__social">
-        <a href="https://github.com/karolliszniewski" target="__blank"
-          ><img src="../media/git.png" alt="" srcset="" class="footer__social"
+        <a target="__blank" href="https://github.com/karolliszniewski"
+          ><img
+            src="../media/git.png"
+            alt=" linkedin icon"
+            srcset=""
+            class="footer__social"
         /></a>
         <a target="__blank" href="https://www.linkedin.com/in/karolliszniewski/"
           ><img
             src="../media/linkedin.png"
-            alt=""
+            alt="github icon"
             srcset=""
             class="footer__social"
         /></a>
-        <a href="https://www.sololearn.com/profile/27645147"
+        <a
+          target="__blank"
+          href="https://www.youtube.com/channel/UCR7Nx0IfTpP1tWRvvi40cFw"
           ><img
             src="../media/youtube.png"
-            alt=""
-            srcset=""
+            alt="youtube icon"
             class="footer__social" /></a></span
       ><span class="footer__links"
         ><a href="#contact" class="footer__link">Contact me</a>
@@ -190,11 +196,10 @@
         for my portfolio. © 2023 - Designed By: Karol Liszniewski</span
       >
     </footer>
-    <script src="js/script.js"></script>
 
+    <!-- highlight.js -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
-    <script>
-      hljs.highlightAll();
-    </script>
+    <!-- GridGenerator , SelectionHistory , Events -->
+    <script src="js/script.js"></script>
   </body>
 </html>
