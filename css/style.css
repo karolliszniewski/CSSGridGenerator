@@ -38,7 +38,7 @@ body{
   min-height:0.001em;
 
   background-image:url("../media/gridarea.jpg");
-  background-color:#141422;
+ 
   background-blend-mode: multiply;
   filter:brightness(100%);
   background-repeat: repeat;
@@ -50,20 +50,7 @@ body{
   filter:brightness(120%);
 }
 
-.square.selected{
-  background-color:rgba(4, 255, 100, 0.5);
-  mix-blend-mode: multiply;
-}
 
-.square.selected2{
-  background-color:rgba(68, 31, 26, 0.5);
-  mix-blend-mode: multiply;
-}
-
-.square.selected.selected2 {
-  background-color: rgba(41, 253, 122, 0.5);
- 
-}
 
 
 

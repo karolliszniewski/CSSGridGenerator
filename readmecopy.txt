@@ -23,3 +23,8 @@ change log v1.1
 text-align:center;
 }
 
+
+changelog 1.2
+- Added: a new class that contains the sequence in which new colors will appear when selected, as well as the current colors that are saved during selection. The base color is assigned to the container's 2000 children, and then the colors are mixed and overwritten
+- Added: a new method called "colorCombine" to the GridGenerator class, which is responsible for mixing colors.
+- Updated:  The color saving method has been changed. Now, colors are not saved in the class and assigned to the child element. Instead, colors are directly included in the child elements of the container. This allows for easier mixing of colors without the need to use built-in CSS functions, which did not meet expectations when it came to mixing too many colors together.
