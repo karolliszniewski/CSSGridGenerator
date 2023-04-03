@@ -28,7 +28,7 @@ change log v1.1
 
 -v1.2
 
-In version 1.2, we added the ability to select multiple fields consecutively, blend colors of those fields, and introduce a dynamic highlighting effect. Also, temporary color blending occurs while holding down the mouse button, which becomes permanent only after releasing the 'mouseup' event.
+In version 1.2, I added the ability to select multiple fields consecutively, blend colors of those fields, and introduce a dynamic highlighting effect. Also, temporary color blending occurs while holding down the mouse button, which becomes permanent only after releasing the 'mouseup' event.
 
 ![chrome-capture-2023-3-3 (2)](https://user-images.githubusercontent.com/105976690/229590779-5e12a7a5-f0c1-4f0f-ae57-7d88f423c449.gif)
 
