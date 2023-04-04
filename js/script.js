@@ -117,7 +117,8 @@ return colorMix
     for(let i = this.minRow;i<=this.maxRow;i++)
     {
    
-      for(let j= this.minColumn;j<=this.maxColumn;j++){
+      for(let j= this.minColumn;j<=this.maxColumn;j++)
+      {
         const square = document.querySelector(`.square[data-row="${i}"][data-column="${j}"]`);
         const squareId = square.id
         const squareColor = square.style.backgroundColor

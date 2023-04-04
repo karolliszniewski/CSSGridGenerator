@@ -38,9 +38,7 @@ body{
   min-height:0.001em;
 
   background-image:url("../media/gridarea.jpg");
- 
   background-blend-mode: multiply;
-  filter:brightness(100%);
   background-repeat: repeat;
   cursor:pointer;
   border:1px dotted #8A8A91;
