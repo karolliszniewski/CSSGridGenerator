@@ -26,3 +26,17 @@ change log v1.1
 * Added: Class SelectionHistory.
 * Added: Variable historyArray.
 
+-v1.2
+
+In version 1.2, I added the ability to select multiple fields consecutively, blend colors of those fields, and introduce a dynamic highlighting effect. Also, temporary color blending occurs while holding down the mouse button, which becomes permanent only after releasing the 'mouseup' event.
+
+![chrome-capture-2023-3-3 (2)](https://user-images.githubusercontent.com/105976690/229590779-5e12a7a5-f0c1-4f0f-ae57-7d88f423c449.gif)
+
+changelog 1.2
+- Added: a new class that contains the sequence in which new colors will appear when selected, as well as the current colors that are saved during selection. The base color is assigned to the container's 2000 children, and then the colors are mixed and overwritten
+- Added: a new method called "colorCombine" to the GridGenerator class, which is responsible for mixing colors.
+- Updated:  The color saving method has been changed. Now, colors are not saved in the class and assigned to the child element. Instead, colors are directly included in the child elements of the container. This allows for easier mixing of colors without the need to use built-in CSS functions, which did not meet expectations when it came to mixing too many colors together.
+- Updated: selectGridArea now includes 3 parameters: an integer, a boolean, and an object that stores previously selected colors and allows for their updating.
+- Updated: updateColumnsAndRows now uses colors from the SelectionColors class when creating children in the container--js container.
+- Updated: clearLiveSelection now uses colors from the SelectionColors object passed into the method, which prevents clearing previously selected areas.
+
