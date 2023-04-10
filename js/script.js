@@ -1,7 +1,60 @@
+class CodeGenerator{
+
+  constructor(){
+    this.htmlCode = document.querySelector(".codes__html")
+    this.cssCode = document.querySelector(".codes__css")
+  }
+
+  createHtmlCode(childsNumber,selectionNumber){
+   
+    let textCode = `<div class="container">`
+    console.log(selectionNumber)
+    for(let i=1;i<selectionNumber;i++)
+    {
+        textCode += 
+        `
+        <div class="child${i}"></div>`
+    }
+
+    textCode += `
+</div>`
+    textCode = textCode.replace(/</g, "&lt;").replace(/>/g, "&gt;")
+    this.htmlCode.innerHTML = textCode
+  }
+
+  createCssCode(columns,rows,columnsGap,rowsGap,selectionNumber,historyArray){
+    console.log(`css code ${2}`)
+    let textCode = `.container{
+      display: grid;
+      grid-template-columns: repeat(${columns}, 1fr);
+      grid-template-rows: repeat(${rows}, 1fr);
+      grid-column-gap: ${columnsGap}px;
+      grid-row-gap: ${rowsGap}px;
+      }`
+      const selectionNumberInteger = parseInt(selectionNumber)
+     
+      for(let i=1;i<selectionNumberInteger;i++){
+        console.log(historyArray[i-1])
+        // grid child will start on lovest value and end on highest value
+        const startColumn = Math.min(historyArray[i-1].startColumn,historyArray[i-1].endColumn)
+        const endColumn = Math.max(historyArray[i-1].startColumn,historyArray[i-1].endColumn)
+        const startRow = Math.min(historyArray[i-1].startRow,historyArray[i-1].endRow)
+        const endRow = Math.max(historyArray[i-1].startRow,historyArray[i-1].endRow)
 
 
-// highlight.js activate
-hljs.highlightAll();
+        textCode += `
+        .child${i}{
+          grid-area: ${startRow} / ${startColumn} / ${endRow + 1} / ${endColumn + 1};
+        }`
+      }
+
+      this.cssCode.innerHTML = textCode
+  }
+  
+ 
+
+}
+
 
 
 
@@ -82,6 +135,8 @@ class GridGenerator{
 
   constructor(containerId){
     this.container = document.getElementById(containerId)
+    this.codeGenerator = new CodeGenerator()
+    this.hljs = hljs;
   }
 
   initializeSelectionCoordinates(){
@@ -126,8 +181,7 @@ return colorMix
 
         square.dataset.select = this.gridArea;
         const combineColors = this.colorCombine(colorArray,selectionColors.color[selectionNumber])
-        
-        console.log( `${colorArray}) vs ${selectionColors.color[selectionNumber]}`)
+
         square.style.backgroundColor = `rgb(${combineColors.join(", ")})`
 
         selectionColors.cellColor[squareId] = (updateCells == true) ? combineColors : selectionColors.cellColor[squareId]
@@ -136,18 +190,38 @@ return colorMix
     }
   }
 
+  getGridOptions() {
+    const columns = parseInt(document.getElementById("options__columns").value);
+    const rows = parseInt(document.getElementById("options__rows").value);
+    const columnsGap = parseInt(document.getElementById("options__columnsgap").value);
+    const rowsGap = parseInt(document.getElementById("options__rowsgap").value);
+    return {
+      columns: columns,
+      rows: rows,
+      columnsGap: columnsGap,
+      rowsGap: rowsGap
+    };
+  }
+
   
-  updateColumnsAndRows(){
+  updateColumnsAndRows(codeGenerator){
     const getColors = new SelectionColors()
-    const columns = parseInt(document.getElementById("options__columns").value)
-    const rows = parseInt(document.getElementById("options__rows").value)
+    const { columns, rows, columnsGap, rowsGap } = this.getGridOptions();
+
     this.container.style.setProperty('grid-template-columns', `repeat(${columns}, minmax(min-content, auto))`);
+    this.container.style.setProperty('grid-column-gap', `${columnsGap}px`);
+    this.container.style.setProperty('grid-row-gap', `${rowsGap}px`);
     
     while(this.container.firstChild){
       this.container.removeChild(this.container.firstChild)
     }
 
     const elementsNumber = columns * rows
+
+    this.codeGenerator.createHtmlCode(elementsNumber,selectionNumber)
+    this.codeGenerator.createCssCode(columns,rows,columnsGap,rowsGap,selectionNumber)
+
+    this.hljs.highlightAll()
     
     this.selectionNumbers = elementsNumber
     let createColumn = 1;
@@ -189,7 +263,8 @@ return colorMix
 
 }
 
-
+// Declare object with the code generator class to generate code for the user.
+const codeGenerator = new CodeGenerator()
 // Declare and initialize constants and variables with the HTML elements required for the functionality.
 const gridGenerator = new GridGenerator("container--js")
 // Create SelectionColors object
@@ -198,13 +273,13 @@ const selectionColors = new SelectionColors()
 let selectionNumber = 1;
 
 //update used to create all child on pageload
-gridGenerator.updateColumnsAndRows()
+gridGenerator.updateColumnsAndRows(codeGenerator)
 
 //allow user to update columns and rows
 const update = document.getElementById("submit--js")
-update.addEventListener('click', gridGenerator.updateColumnsAndRows.bind(gridGenerator));
+update.addEventListener('click', gridGenerator.updateColumnsAndRows.bind(gridGenerator, codeGenerator, hljs.highlightAll.bind(hljs)));
 
-// Declare array with contains selection history // probably not the best way to do this
+// Declare array with contains selection history
 let historyArray = []
 
 
@@ -248,10 +323,18 @@ gridGenerator.container.addEventListener("mouseup", () =>{
   gridGenerator.getMinMaxValues()
   gridGenerator.selectGridArea(selectionNumber,true,selectionColors)
   selectionNumber++;
-  
-  // add selection to history
+
+  // add selection to history array
   let section = new SelectionHistory(gridGenerator.startColumn,gridGenerator.endColumn,gridGenerator.startRow,gridGenerator.endRow)
   historyArray.push(section)
+  
+
+  codeGenerator.createHtmlCode(gridGenerator.selectionNumbers,selectionNumber)
+
+  const { columns, rows, columnsGap, rowsGap } = gridGenerator.getGridOptions();
+  codeGenerator.createCssCode(columns, rows, columnsGap, rowsGap, selectionNumber,historyArray);
+
+  
 
 
   gridGenerator.gridArea++;
@@ -259,8 +342,7 @@ gridGenerator.container.addEventListener("mouseup", () =>{
   gridGenerator.startSquare = null;
   gridGenerator.endSquare = null;
 
-
-
+  hljs.highlightAll()
 })
 
 

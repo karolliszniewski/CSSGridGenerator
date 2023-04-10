@@ -23,3 +23,21 @@ change log v1.1
 text-align:center;
 }
 
+
+changelog 1.2
+- Added: a new class that contains the sequence in which new colors will appear when selected, as well as the current colors that are saved during selection. The base color is assigned to the container's 2000 children, and then the colors are mixed and overwritten
+- Added: a new method called "colorCombine" to the GridGenerator class, which is responsible for mixing colors.
+- Updated:  The color saving method has been changed. Now, colors are not saved in the class and assigned to the child element. Instead, colors are directly included in the child elements of the container. This allows for easier mixing of colors without the need to use built-in CSS functions, which did not meet expectations when it came to mixing too many colors together.
+
+changelog 1.3
+- Added: New class called "CodeGenerator" that includes methods for generating HTML and CSS code box content on the page.
+
+- Added: new method "createHtmlCode" that generate html code for grid layout selected by user on grid area
+- Added: new method "createCssCode" that generate css code for grid layout. set the values for columns rows and gap for container and
+create css code for each child
+-Updated in GridGenerator now hljs is now also avaliable inside this object to highligh text after some actions when page load
+-Updated now GridGenerator have acces to class CodeGenerator
+-Added new method inside GridGenerator "getGridOptions" to avoid redumbantion in another part of code, now slection grid property can be get as object in one line of code
+-Updated in "updateColumnsAndRows" now in one line of code get as object
+- Updated updateColumnsAndRows trigers createHtmlCode and createCssCode that make changes in page structure and highlightAll is triggered to colorize text again
+- Updated: mouseup event trigers createHtmlCode and CreateCssCode methods so the code is dynamicly created when user select aread on grid generator 

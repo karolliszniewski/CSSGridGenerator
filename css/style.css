@@ -23,7 +23,8 @@ body{
   margin:1em;
   grid-column: 1/4;
   display:grid;
-  grid-template-columns:repeat(8,minmax(min-content,max-content));
+
+  
   user-select: none;
   outline-color:rgb(89,83,106);
   outline-style: solid;
@@ -73,7 +74,11 @@ body{
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
   color:#fff;
-  background-image:linear-gradient(#141422,#06060a);
+  background-image: linear-gradient(#141422,#06060a); /* Modern browsers */
+  background-image: -webkit-linear-gradient(top, #141422, #06060a); /* Safari 5.1-9 */
+  background-image: -moz-linear-gradient(top, #141422, #06060a); /* Firefox 3.6-15 */
+  background-image: -o-linear-gradient(top, #141422, #06060a); /* Opera 11.1-12.0 */
+  background-image: -ms-linear-gradient(top, #141422, #06060a); /* IE 10+ */
   text-align:center;
   font-size:.9em;
   font-weight:400;
@@ -83,16 +88,11 @@ body{
 .options__input{
   padding-left:0.6em;
   grid-column:1/3;
-  width:100%;
   background:transparent;
-
   border:none;
   width:7em;
   height:2em;
   color:#fff;
-  
-  
-  border:none;
 }
 
 .options__input:focus{
@@ -101,12 +101,13 @@ body{
 
 .options__submit:hover{
   filter:brightness(107%);
+  -webkit-filter: brightness(107%); /* Safari 6.0 - 9.1 */
  
 }
 .options__submit:active{
- 
   box-shadow: 0px 0px 0px 0px #262635;
   filter:brightness(150%);
+  -webkit-filter: brightness(150%); /* Safari 6.0 - 9.1 */
 }
 .options__submit{
   grid-column:1/3;
@@ -117,6 +118,10 @@ body{
   border:none;
   box-shadow: 0px 0px 0px 4px #262635;
   background-image:linear-gradient( #191924 0%,#111118 95%,black 100%);
+  background-image:-webkit-linear-gradient(#191924 0%,#111118 95%,black 100%); /* Safari 5.1-9 */
+  background-image:-moz-linear-gradient(#191924 0%,#111118 95%,black 100%); /* Firefox 3.6-15 */
+  background-image:-o-linear-gradient(#191924 0%,#111118 95%,black 100%); /* Opera 11.1-12.0 */
+  background-image:-ms-linear-gradient(#191924 0%,#111118 95%,black 100%); /* IE 10+ */
   border-radius:5px;
   outline:none;
   transition:all 0.2s ease-out;
@@ -190,11 +195,13 @@ header{
 
 .header__source-link:hover{
 filter:brightness(110%);
+-webkit-filter:brightness(110%); /* Safari 6.0 - 9.1 */
 
 }
 
 .header__source-link:active{
   filter:brightness(80%);
+  -webkit-filter:brightness(80%); /* safari 6.0 - 9.1 */
 }
 
 .header__social-link{
@@ -206,6 +213,7 @@ filter:brightness(110%);
 
 .header__social-link:hover{
   filter:brightness(110%);
+  -webkit-filter:brightness(110%); /* Safari 6.0 - 9.1 */
 }
 
 .header__links{
@@ -358,6 +366,11 @@ label{
 
 .codes__header{
   background-image:linear-gradient(#141422,#06060a);
+  background-image:-webkit-linear-gradient(#141422,#06060a);
+  background-image:-moz-linear-gradient(#141422,#06060a);
+  background-image:-o-linear-gradient(#141422,#06060a);
+  background-image:-ms-linear-gradient(#141422,#06060a);
+  
   height:1.9em;  
   text-align: center;
   text-justify: center;
