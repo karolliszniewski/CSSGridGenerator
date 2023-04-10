@@ -40,3 +40,27 @@ changelog 1.2
 - Updated: updateColumnsAndRows now uses colors from the SelectionColors class when creating children in the container--js container.
 - Updated: clearLiveSelection now uses colors from the SelectionColors object passed into the method, which prevents clearing previously selected areas.
 
+
+-v1.3
+
+Fixed gaps:
+![chrome-capture-2023-3-10](https://user-images.githubusercontent.com/105976690/230891547-1164e8b0-60d6-44cc-8da6-103b38a33688.gif)
+
+
+The CSS and HTML code is now dynamically generated on the "mouseup" event.
+![chrome-capture-2023-3-10 (1)](https://user-images.githubusercontent.com/105976690/230891979-321db52a-aaa4-43bf-8f98-d82c5958c2c1.gif)
+
+
+
+changelog 1.3
+- Fixed: A fix has been made to the preview and code sections to ensure that gaps now work properly.
+- Added: New class called "CodeGenerator" that includes methods for generating HTML and CSS code box content on the page.
+- Added: A new method called "createHtmlCode" has been added to the software. This method generates HTML code for the grid layout that has been selected by the user within the grid area.
+- Added: The second method, named "createCssCode," generates CSS code for each child of the selected grid layout by utilizing the values for columns, rows, and gaps that have been previously set by the user in the input fields.
+- Updated: The GridGenerator has been updated to include hljs within the object. This enables the highlighting of text after certain actions when the page is loaded.
+- Updated: The GridGenerator has been updated to now have access to the CodeGenerator class.
+- Added: A new method has been added to the GridGenerator called "getGridOptions." This method eliminates redundancy in another part of the code by enabling the selection of grid properties as an object in a single line of code.
+- Updated: "The "updateColumnsAndRows" function has been updated to enable the retrieval of object data in a single line of code."
+- Updated:  The updated "updateColumnsAndRows" function triggers the "createHtmlCode" and "createCssCode" methods which make changes to the page structure. Additionally, the "highlightAll" function is triggered to recolorize the text.
+- Updated: The mouseup event has been updated to trigger the "createHtmlCode" and "createCssCode" methods, enabling the dynamic creation of code when the user selects an area on the GridGenerator.
+
