@@ -30,6 +30,7 @@ changelog 1.2
 - Updated:  The color saving method has been changed. Now, colors are not saved in the class and assigned to the child element. Instead, colors are directly included in the child elements of the container. This allows for easier mixing of colors without the need to use built-in CSS functions, which did not meet expectations when it came to mixing too many colors together.
 
 changelog 1.3
+- Fixed: A fix has been made to the preview and code sections to ensure that gaps now work properly.
 - Added: New class called "CodeGenerator" that includes methods for generating HTML and CSS code box content on the page.
 - Added: A new method called "createHtmlCode" has been added to the software. This method generates HTML code for the grid layout that has been selected by the user within the grid area.
 - Added: The second method, named "createCssCode," generates CSS code for each child of the selected grid layout by utilizing the values for columns, rows, and gaps that have been previously set by the user in the input fields.

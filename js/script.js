@@ -1,3 +1,4 @@
+//When all data is ready, generate HTML and CSS code
 class CodeGenerator{
 
   constructor(){
@@ -5,6 +6,7 @@ class CodeGenerator{
     this.cssCode = document.querySelector(".codes__css")
   }
 
+  // Each time when user select new area, generate new HTML and add child divs
   createHtmlCode(childsNumber,selectionNumber){
    
     let textCode = `<div class="container">`
@@ -22,8 +24,9 @@ class CodeGenerator{
     this.htmlCode.innerHTML = textCode
   }
 
+  // Each time when user select new area, or Update options, generate new CSS code
   createCssCode(columns,rows,columnsGap,rowsGap,selectionNumber,historyArray){
-    console.log(`css code ${2}`)
+      // generate CSS code for container
     let textCode = `.container{
       display: grid;
       grid-template-columns: repeat(${columns}, 1fr);
@@ -32,7 +35,8 @@ class CodeGenerator{
       grid-row-gap: ${rowsGap}px;
       }`
       const selectionNumberInteger = parseInt(selectionNumber)
-     
+    
+      // generate CSS code for each child
       for(let i=1;i<selectionNumberInteger;i++){
         console.log(historyArray[i-1])
         // grid child will start on lovest value and end on highest value
@@ -57,7 +61,11 @@ class CodeGenerator{
 
 
 
-
+/**
+ * Represents a selection history object that tracks the start and end columns and rows of a user's selection
+ * within a CSS grid. Multiple instances of this class can be stored in an array and passed to another object
+ * to generate CSS grid code.
+ */
 class SelectionHistory{
 
   constructor(startColumn,endColumn,startRow,endRow){
@@ -71,7 +79,7 @@ class SelectionHistory{
 
 }
 
-
+// Selection colors class that stores an array of colors that can be used to color the user's selections.
 class SelectionColors{
 
 
@@ -125,7 +133,7 @@ class SelectionColors{
 
 
 
-// class
+// class to generate grid and handle all grid related functionality
 class GridGenerator{
 
   isMouseDown = false;
@@ -345,6 +353,18 @@ gridGenerator.container.addEventListener("mouseup", () =>{
   hljs.highlightAll()
 })
 
+let sum = 0;
+let num = 0;
+for(let i =1;i<=3;i++)
+{
+  num *= 3;
+
+  if(i == 2)
+  {
+    
+
+}
+}
 
 
 
