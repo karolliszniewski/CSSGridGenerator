@@ -26,6 +26,7 @@ class CodeGenerator{
 
   // Each time when user select new area, or Update options, generate new CSS code
   createCssCode(columns,rows,columnsGap,rowsGap,selectionNumber,historyArray){
+
       // generate CSS code for container
     let textCode = `.container{
       display: grid;
@@ -226,6 +227,10 @@ return colorMix
 
     const elementsNumber = columns * rows
 
+    selectionNumber = 1;
+    // here remove history of selection
+
+
     this.codeGenerator.createHtmlCode(elementsNumber,selectionNumber)
     this.codeGenerator.createCssCode(columns,rows,columnsGap,rowsGap,selectionNumber)
 
@@ -276,7 +281,7 @@ const codeGenerator = new CodeGenerator()
 // Declare and initialize constants and variables with the HTML elements required for the functionality.
 const gridGenerator = new GridGenerator("container--js")
 // Create SelectionColors object
-const selectionColors = new SelectionColors()
+let selectionColors = new SelectionColors()
 
 let selectionNumber = 1;
 
@@ -285,7 +290,12 @@ gridGenerator.updateColumnsAndRows(codeGenerator)
 
 //allow user to update columns and rows
 const update = document.getElementById("submit--js")
-update.addEventListener('click', gridGenerator.updateColumnsAndRows.bind(gridGenerator, codeGenerator, hljs.highlightAll.bind(hljs)));
+update.addEventListener('click', () => {
+  gridGenerator.updateColumnsAndRows(codeGenerator, () => hljs.highlightAll());
+  historyArray = []
+  selectionColors = new SelectionColors()
+});
+
 
 // Declare array with contains selection history
 let historyArray = []
@@ -353,18 +363,6 @@ gridGenerator.container.addEventListener("mouseup", () =>{
   hljs.highlightAll()
 })
 
-let sum = 0;
-let num = 0;
-for(let i =1;i<=3;i++)
-{
-  num *= 3;
-
-  if(i == 2)
-  {
-    
-
-}
-}
 
 
 
