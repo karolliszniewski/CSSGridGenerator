@@ -66,3 +66,5 @@ changelog 1.3
 - Updated:  The updated "updateColumnsAndRows" function triggers the "createHtmlCode" and "createCssCode" methods which make changes to the page structure. Additionally, the "highlightAll" function is triggered to recolorize the text.
 - Updated: The mouseup event has been updated to trigger the "createHtmlCode" and "createCssCode" methods, enabling the dynamic creation of code when the user selects an area on the GridGenerator.
 
+changelog 1.4
+- Fix: I have identified a bug in the grid generator. When a user selects an area and subsequently attempts to modify the number of rows, columns, or gaps, the generator crashes. This issue arises due to the lack of testing in this specific sequence of actions. To address this, I have implemented a solution: now, the generator will clear all data upon each update. Consequently, users will need to follow the same sequence of actions as when the tool was initially created. This modification prevents the occurrence of the peculiar error.
