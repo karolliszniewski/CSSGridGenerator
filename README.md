@@ -1,4 +1,5 @@
 # CSSGridGenerator
+Live Preview : https://codepen.io/karolliszniewski/pen/jOXELpy
 
 This Git repository contains a CSS Grid Generator built using pure HTML, CSS, and Vanilla JavaScript. It allows users to easily create and customize CSS Grid layouts. Additionally, Syntax highlighting from highlightjs.org is used to highlight code on the page.
 
